@@ -108,13 +108,17 @@
         this.$emit('input',val.join(','));
         let arr = val;
         let str = '';
-        let id = findItem(this.options,arr[arr.length-1])['dcterms:identifier'];
-        arr.forEach((item,i) => {
-          str += findItem(this.options,item)['spi:triNameTX'];
-          if(i<arr.length-1){
-            str +=' / ';
-          }
-        })
+        let id = '';
+        if(this.options.length){
+          arr.forEach((item,i) => {
+            let rel = findItem(this.options,item);
+            str += rel['spi:triNameTX'];
+            id = rel['dcterms:identifier'];
+            if(i<arr.length-1){
+              str +=' / ';
+            }
+          })
+        }
         //this.formData.QUEST_TYPE = str;
         this.$emit('questtype',str,id);
       }
