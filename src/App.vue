@@ -13,7 +13,7 @@
           <el-form :model="formData" status-icon :rules="formRules" ref="form">
 
 
-          <!--行政服务基本信息板块   start-->
+          <!--行政服务基本信息板块   start    -->
           <my-panel title="行政服务基本信息" :my-style="{marginBottom:'20px'}">
             <div slot="my-panel-body">
               <el-row :gutter="16" :class="['padTop']">
