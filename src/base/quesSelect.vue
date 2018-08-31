@@ -46,8 +46,8 @@
           child: 'cities'
         }*/
         props: {
-          //value: 'spi:triPathTX',
-          value: 'dcterms:identifier',
+          value: 'spi:triPathTX',
+          //value: 'dcterms:identifier',
           label: 'spi:triNameTX',
           children: 'child'
         }
@@ -108,6 +108,7 @@
         this.$emit('input',val.join(','));
         let arr = val;
         let str = '';
+        let id = findItem(this.options,arr[arr.length-1])['dcterms:identifier'];
         arr.forEach((item,i) => {
           str += findItem(this.options,item)['spi:triNameTX'];
           if(i<arr.length-1){
@@ -115,14 +116,14 @@
           }
         })
         //this.formData.QUEST_TYPE = str;
-        this.$emit('questtype',str);
+        this.$emit('questtype',str,id);
       }
     }
   };
   function findItem(arr,findVal){
     for(let i=0; i<arr.length; i++){
-      //if(arr[i]['spi:triPathTX'] == findVal){
-      if(arr[i]['dcterms:identifier'] == findVal){
+      if(arr[i]['spi:triPathTX'] == findVal){
+      //if(arr[i]['dcterms:identifier'] == findVal){
         return arr[i];
       }
     }

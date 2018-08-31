@@ -18,6 +18,7 @@ export default {
   QUEST_SOURCE:1,//问题来源
   QUEST_TYPE:'',//问题种类
   QUEST_TYPE_PATH:'',//问题种类编号
+  QUEST_SPEC_ID:'',
   URGENT:'',//问题优先级
   QUEST_HANDLE_PERSON:'',//问题处理人
   QUEST_DESCRIBE:'',

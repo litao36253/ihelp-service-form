@@ -266,6 +266,9 @@ export default {
       if(data['QUEST_TYPE_PATH']){
         req.QUEST_TYPE_PATH = data['QUEST_TYPE_PATH']
       }
+      if(data['QUEST_SPEC_ID']){
+        req.QUEST_SPEC_ID = data['QUEST_SPEC_ID']
+      }
       if(data['URGENT']){
         req.URGENT = data['URGENT']
       }

@@ -489,8 +489,9 @@
         this.$message.error('出错了哦，请重试或联系管理员')
       },
 
-      questtype(val){
+      questtype(val,id){
         this.formData.QUEST_TYPE = val;
+        this.formData.QUEST_SPEC_ID = id;
       },
 
       async remoteMethod(query,pageNo,pageSize){
@@ -592,6 +593,7 @@
         this.formData.QUEST_TYPE_PATH = queryInfo.QUEST_TYPE_PATH || '';
         this.$nextTick(()=>{
           this.formData.QUEST_TYPE = queryInfo.QUEST_TYPE || '';
+          this.formData.QUEST_SPEC_ID = queryInfo.QUEST_SPEC_ID || '';
         })
         this.formData.URGENT = queryInfo.URGENT || '';
         this.formData.QUEST_HANDLE_PERSON = queryInfo.QUEST_HANDLE_PERSON || '';
