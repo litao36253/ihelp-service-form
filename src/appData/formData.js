@@ -12,7 +12,7 @@ export default {
   FLOORS:'',//FLOORNAME
   EQUIPMENT:'',//spi：triNameTX
   EQUIPMENT_ID:'',//spi:trildTX
-  EQUIPMENT_PAGE:1,
+  EQUIPMENT_PAGE:1,//设备页码
   DEMAND_USER:'',//需求人，通过url获取到的
   INPUT_PERSON:"",//录单人
   QUEST_SOURCE:1,//问题来源
