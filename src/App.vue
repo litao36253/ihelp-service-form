@@ -120,7 +120,7 @@
                 <el-col :span="3" :class="['alignRight']"><span class="requM">*</span>问题种类</el-col>
                 <el-col :span="9">
                   <el-form-item prop="QUEST_TYPE_PATH">
-                    <ques-select v-model="formData.QUEST_TYPE_PATH" @questtype="questtype"></ques-select>
+                    <ques-select v-model="formData.QUEST_TYPE_PATH" @questtype="questtype" :quest-type-list="questTypeList"></ques-select>
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -325,6 +325,7 @@
         formRules,
         formRulesContory,
         selectLists,
+        questTypeList:[],
         accsLoading:false,  //设备是否在加载中
         assaInit:0, //设备初始化次数
         assaPage:1 //设备初始化页数
@@ -555,7 +556,7 @@
       let DEMAND_USER = UrlArgument['cust_code']||'';
       this.formData.DEMAND_USER = DEMAND_USER;
       this.formData.INPUT_PERSON = UrlArgument['INPUT_PERSON'] || '';
-
+      this.questTypeList = await await api.getReqeustService() || [];
       if((UrlArgument.flag == 3) && UrlArgument['OPT_SNO']){  //如果是点击修改草稿进入的该页面
         let queryInfo = await api.queryInfo(UrlArgument['OPT_SNO']);
         this.formData.CHANNEL = queryInfo.CHANNEL||'';

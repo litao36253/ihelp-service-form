@@ -20,16 +20,16 @@
   import api from '../api'
   export default {
     async created(){
-      let questTypeList = await api.getReqeustService() || [];
-      this.options = questTypeList.map(item =>{
+      //let questTypeList = await api.getReqeustService() || [];
+      /*this.options = this.questTypeList.map(item =>{
         let obj = JSON.parse(JSON.stringify(item));
         obj.child = [];
         return obj;
-      })
+      })*/
     },
     data() {
       return {
-        val:[],
+
         /*options: [{
           val:'251',
           label: '江苏',
@@ -99,9 +99,16 @@
       }
     },
 
-    props:['value'],
+    props:['value','quest-type-list'],
     watch:{
-      value(val){
+      questTypeList(val){
+        this.options = val.map(item =>{
+          let obj = JSON.parse(JSON.stringify(item));
+          obj.child = [];
+          return obj;
+        })
+      }
+      /*value(val){
         this.val = val.split(',');
       },
       val(val){
@@ -121,6 +128,35 @@
         }
         //this.formData.QUEST_TYPE = str;
         this.$emit('questtype',str,id);
+      }*/
+    },
+    computed:{
+      val:{
+        get(){
+          if(this.value){
+            return this.value.split(',');
+          }else{
+            return [];
+          }
+        },
+        set(val){
+          let arr = val;
+          let str = '';
+          let id = '';
+          if(this.options.length){
+            arr.forEach((item,i) => {
+              let rel = findItem(this.options,item);
+              str += rel['spi:triNameTX'];
+              id = rel['dcterms:identifier'];
+              if(i<arr.length-1){
+                str +=' / ';
+              }
+            })
+          }
+          //this.formData.QUEST_TYPE = str;
+          this.$emit('questtype',str,id);
+          this.$emit('input',val.join(','));
+        }
       }
     }
   };
