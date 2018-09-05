@@ -41,14 +41,6 @@
     methods: {
       async remoteMethod(query) {
         if (query !== '') {
-          /*this.loading = true;
-          setTimeout(() => {
-            this.loading = false;
-            this.options = this.list.filter(item => {
-              return item.label.toLowerCase()
-                .indexOf(query.toLowerCase()) > -1;
-            });
-          }, 200);*/
           this.loading = true;
           this.options = await api.queryPeple(query)
           this.loading = false;
