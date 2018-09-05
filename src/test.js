@@ -49,5 +49,5 @@ function f(arr,val) {
   }
 }
 console.log(f(arr, '2510101'));
-
+//随便写点东西
 
